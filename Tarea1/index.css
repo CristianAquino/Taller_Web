@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200,300,400,500,600,700,800,900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #ccc;
+}
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    min-height: 100vh;
+}
+.content .header{
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 150px;
+    background-color: #fff;
+}
+.content .header::before{
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 60%;
+    background-color: #124f88;
+    right: 0;
+    bottom: -2px;
+}
+.content .header .imgBx{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.content .header .imgBx img{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.content .header .name{
+    width: 60%;
+    padding-left: 20px;
+    color: #124f88;
+    letter-spacing: 2px;   
+}
+.content .header .name h1{
+    font-size: 1.8em;
+}
+.content .header .name h3{
+    font-size: 1em;
+}
+.content .data{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: calc(100vh - 150px);
+}
+.content .data .left h2{
+    border-bottom: 1px solid #fff;
+}
+.content .data .left{
+    width: 40%;
+    padding: 20px;
+    background-color: #124f88;
+    color: #fff;
+    font-size: 1em;
+}
+.content .data .about_me p{
+    margin: 20px 0;
+}
+.content .data .left .lista{
+    list-style: none;
+    margin: 20px 0;
+}
+.content .data .left .lista .contact{
+    display: flex;
+    align-items: center;
+}
+.content .data .left .lista .contact span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    margin: 3px;    
+}
+.content .data .left .lista .contact a{
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+}
+.content .data .left .educacion p{
+    margin: 20px 0;
+}
+.content .data .right{
+    width: 60%;
+    background-color: #fff;
+    padding: 20px;
+    color: #124f88;
+    font-size: 1em;
+}
+.content .data .right h2{
+    border-bottom: 1px solid #124f88;
+    margin-bottom: 10px;
+}
+.content .data .right .lista .skills{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: .3s;
+}
+.content .data .right .lista .skills h3{
+    font-weight: 300;
+    font-size: 1em;
+}
+.content .data .right .lista .skills .stars{
+    display: flex;
+    align-items: center;
+    color: #124f88;
+}
+.content .data .right .lista .skills:hover{
+    background-color: #124f88;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+.content .data .right .lista .skills:hover .stars{
+    color: #ff0;
+}
+.content .data .right .lista .skills .stars span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    margin: 3px;
+}
+.content .data .right .interes{
+    list-style: none;
+}
+.content .data .right .interes li{
+    margin: 10px 0;
+}
