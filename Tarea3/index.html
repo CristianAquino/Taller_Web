@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="content">
+        <div class="box data">
+            <h2>IMC</h2>
+            <input type="number" id="altura" placeholder="Altura(cm)">
+            <input type="number" id="peso" placeholder="Peso(Kg)">
+            <button class="btn btndata">Calcular</button>
+        </div>
+        <div class="box result">
+            <h2>RESULTADOS</h2>
+            <div class="datos">
+                <p class="altura"></p>
+                <p class="peso"></p>
+                <p class="imc"></p>
+            </div>
+            <div class="imgBx">
+                <img src="masa.jpg" alt="masa">
+            </div>
+            <button class="btn btnresult">Volver a calcular</button>
+        </div>
+    </div>
+    <script>
+        const data = document.querySelector('.data');
+        const result = document.querySelector('.result');
+        const btndata = document.querySelector('.btndata');
+        const btnresult = document.querySelector('.btnresult');
+        const altura = document.getElementById('altura');
+        const peso = document.getElementById('peso');
+        const datos = result.querySelectorAll('p')
+        
+        setInterval(()=>{
+            if(altura.value=='' || peso.value==''){
+                btndata.style.pointerEvents='none';
+            }else{
+                btndata.style.pointerEvents='all';
+            }   
+        },500);
+
+        btndata.addEventListener('click',()=>{
+            data.classList.add('active');
+            result.classList.add('active');
+            let pnew = Number(peso.value);
+            let anew = Number(altura.value);
+            datos[0].innerHTML = `Peso: ${pnew} Kg.`;
+            datos[1].innerHTML = `Altura: ${anew} cm.`;
+            calculoIMC(pnew,anew);
+        })
+        btnresult.addEventListener('click',()=>{
+            result.classList.remove('active');
+            data.classList.remove('active');
+            altura.value='';
+            peso.value='';
+        })
+        
+        function calculoIMC(peso,altura){
+            let imc = peso / Math.pow(altura/100,2);
+            datos[2].innerHTML = isNaN(imc) ? `IMC:0`: `IMC: ${imc.toFixed(2)}`;
+
+            if (imc < 18.5){
+                document.querySelector('body').style.setProperty('--i',6);
+            }else if(imc < 24.9){
+                document.querySelector('body').style.setProperty('--i',5);
+            }else if(imc < 29.9){
+                document.querySelector('body').style.setProperty('--i',4);
+            }else if(imc < 34.9){
+                document.querySelector('body').style.setProperty('--i',3);
+            }else if(imc < 39.9){
+                document.querySelector('body').style.setProperty('--i',2);
+            }else{
+                document.querySelector('body').style.setProperty('--i',1);
+            }
+        }
+    </script>
+</body>
+</html>
