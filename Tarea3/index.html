@@ -45,6 +45,12 @@
             }   
         },500);
 
+        if(altura<2){ 
+            imc = peso / Math.pow(altura,2); 
+        }else{ 
+            imc = peso / Math.pow(altura/100,2); 
+        }
+
         btndata.addEventListener('click',()=>{
             data.classList.add('active');
             result.classList.add('active');
