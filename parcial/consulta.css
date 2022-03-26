@@ -1,0 +1,54 @@
+.formRegister form.consulta{
+    width: 100%;
+    padding: 0 50px;
+    display: grid;
+    grid-template-areas: "h3 h3"
+                        "cod name"
+                        "sangre medicina"
+                        "sangre medicina"
+                        "rayos ."
+                        "costo ."
+                        "boton .";
+    gap: 10px;
+}
+
+.formRegister form.consulta h3{
+    grid-area: h3;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+.formRegister form.consulta input:nth-child(2){
+    grid-area: cod;
+}
+.formRegister form.consulta input:nth-child(3){
+    grid-area: name;
+}
+.formRegister form.consulta textarea:nth-child(4){
+    grid-area: sangre;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    outline: none;
+    font-size: 16px;
+    border: 1px solid #333;
+    resize: none;
+}
+.formRegister form.consulta textarea:nth-child(5){
+    grid-area: medicina;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    outline: none;
+    font-size: 16px;
+    border: 1px solid #333;
+    resize: none;
+}
+.formRegister form.consulta .boxConsult{
+    grid-area: rayos;
+}
+.formRegister form.consulta input[type='number']{
+    grid-area: costo;
+}
+.formRegister form.consulta input[type='submit']{
+    grid-area: boton;
+}
