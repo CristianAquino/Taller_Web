@@ -1,0 +1,53 @@
+create database parcial;
+use parcial;
+
+create table users(
+idUser int not null auto_increment,
+codUser varchar(255),
+username varchar(255),
+email varchar(255),
+dni varchar(255),
+password varchar(255),
+type char(1) default 2,
+primary key(idUser)
+);
+
+create table perro(
+idPerro int not null auto_increment,
+codPerro varchar(255),
+nameDog varchar(255),
+fechaNacimiento varchar(255),
+raza varchar(255),
+genero char(1),
+foto varchar(255),
+usuarioForen int,
+primary key(idPerro),
+foreign key(usuarioForen) references users(idUser)
+);
+
+create table diagnostico(
+idDiagnostico int not null auto_increment,
+codDiagnostico varchar(255),
+rayosX varchar(255),
+sangre varchar(255),
+medicamentos varchar(255),
+costo varchar(255),
+vetForen int,
+perForen int,
+primary key(idDiagnostico),
+foreign key(vetForen) references users(idUser),
+foreign key(perForen) references perro(idPerro)
+);
+
+//admin
+inser into users(type) values (0);
+
+select diagnostico.Nombre, users.username
+from perro join diagnostico
+on perro.id = diagnostico.id
+join users
+on diagnostico.id = users.id;
+
+$newsql = "select diagnostico.codDiagnostico, users.username from perro inner join diagnostico on perro.id = diagnostico.perForen inner join users on diagnostico.vetForen = users.id where dni = '$v3'";
+
+select * from perro join(SELECT codDiagnostico, perForen, vetForen from diagnostico) as diagnostico on perro.idPerro = diagnostico.perForen join (SELECT idUser, username, email from users) as users on diagnostico.vetForen = users.idUser where perro.idPerro = 1;
