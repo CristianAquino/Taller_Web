@@ -6,3 +6,33 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+/* .mensaje{
+    position: absolute;
+    display: none;
+    left: 100px;
+    right: 100px;
+}
+.mensaje .register{
+    display: inline-block;
+    background-color: rgb(128, 255, 0);
+    bottom: 12px;
+    padding: 10px 0;
+} */
+.mensaje{
+    position: absolute;
+    display: inline-block;
+    left: 100px;
+    right: 100px;
+    background-color: rgb(128, 255, 0);
+    bottom: 12px;
+    padding: 10px 0;
+}
+.dash{
+    position: absolute;
+    display: inline-block;
+    background-color: rgb(128, 255, 0);
+    top: 60px;
+    left: 340px;
+    right: 0;
+    padding: 10px 0;
+}

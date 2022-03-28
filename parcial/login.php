@@ -10,12 +10,14 @@ if (!empty($_POST['dni']) && !empty($_POST['password'])){
         die("Error de conexion");
     }
     if(password_verify($v2,$row['password'])){
-        $_SESSION['user_id'] = $row['id'];
+        $_SESSION['user_id'] = $row['idUser'];
         $_SESSION['user_name'] = $row['username'];
-        header("Location: dashboard.php");
+        $_SESSION['user_type'] = $row['type'];
+        header("Location: dashboard1.php");
     }else{
-        // $_SESSION['login'] = 'CORREO O CONTRASEÑA INCORRECTO'; 
-        // header("Location: home.php");
+        $_SESSION['error_login'] = 'DNI o contraseña incorrecto'; 
+        $_SESSION['error_login_class'] = 'active'; 
+        header("Location: home.php#ingresar");
         echo 'ERROR';
     }
 }else{

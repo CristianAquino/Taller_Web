@@ -1,6 +1,6 @@
 <?php
 include('db.php');
-if (!empty($_POST['codigo']) && !empty($_POST['name'])&& !empty($_POST['fechnac'])&& !empty($_POST['raza'])&& !empty($_POST['genero'])){
+if (!empty($_POST['codigo']) && !empty($_POST['name'])&& !empty($_POST['fechnac'])&& !empty($_POST['raza'])){
     $v1 = $_REQUEST['codigo'];
     $v2 = $_REQUEST['name'];
     $v3 = $_REQUEST['fechnac'];
@@ -13,12 +13,10 @@ if (!empty($_POST['codigo']) && !empty($_POST['name'])&& !empty($_POST['fechnac'
     if(!$result){
         die("Error de conexion");
     }
-    // $_SESSION['message_registro'] = 'Perro Registrado';
-    // $_SESSION['message_registro_class'] = 'active';
-    unset($_SESSION['count_perro']);
-    header("Location: dashboard.php");
+    $_SESSION['mensaje_dash'] ='Registrado con exito';
+    // $_SESSION['class_dash'] ='dash';
+    header("Location: dashboard3.php");
 }else{
     echo 'Debe llenar todos los campos';
-    // header("Location: register.php");
 }
 ?>

@@ -28,3 +28,34 @@ $data = mysqli_fetch_assoc($result);
         </div>
     </div>
 </div>
+<?php if($_SESSION['user_type'] == '1'): ?>
+<?php
+$DiagProfile = "SELECT * FROM diagnostico join perro on perro.idPerro=diagnostico.perForen join users on perro.usuarioForen = users.idUser where vetForen = '$profile'";
+$Diagresult = mysqli_query($conn, $DiagProfile);
+$Diagrow = mysqli_num_rows($Diagresult);
+?>
+<?php if(!$Diagrow):?>
+<h3>No se encontro historial de Diagnosticos</h3>
+<?php else: ?>
+<h3>N° de Diagnosticos: <?= $Diagrow ?></h3>
+<div class="diagnostico">
+    <table>
+        <tr>
+            <th>Codigo Diagnostico</th>
+            <th>Nombre Dueño</th>
+            <th>Nombre del Perro</th>
+            <th>Accion</th>
+        </tr>
+        <?php while($Diagdata = mysqli_fetch_array($Diagresult)):?>
+        <tr>
+            <td><?= $Diagdata['codDiagnostico'] ?></td>
+            <td><?= $Diagdata['username'] ?></td>
+            <td><?= $Diagdata['nameDog'] ?></td>
+            <td><a href="dashboard6.php?id=<?= $Diagdata['idDiagnostico'] ?>">Ver</a></td>
+        </tr>
+        <?php endwhile; ?>
+    </table>
+</div>
+<?php endif; ?>
+<?php endif;?>
+<!-- SELECT * FROM diagnostico join users on diagnostico.vetForen = users.idUser join perro on perro.idPerro=diagnostico.perForen where vetForen = 3; -->

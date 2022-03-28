@@ -10,24 +10,35 @@ if (!empty($_POST['username']) && !empty($_POST['email'])&& !empty($_POST['dni']
     $v4 = $_REQUEST['dni'];
     $v5 = $_REQUEST['password'];
     $v6 = $_REQUEST['type'];
-    if(strlen($v5)>=8){
-        if(preg_match($validacionL,$v5) && preg_match($validacionN,$v5) && preg_match($validacionE,$v5)){
-            $password = password_hash($v5, PASSWORD_BCRYPT);   
-            $sql = "INSERT INTO users (codUser, username, email, dni, password, type) VALUES ('$v4','$v2','$v3', '$v4', '$password', '$v6')";
-            $result = mysqli_query($conn, $sql);
-            if(!$result){
-                die("Error de conexion");
+    $DNIsql = "select * from users where dni = '$v4' or email = '$v3'";
+    $DNIresult = mysqli_query($conn, $DNIsql);
+    $DNIrow = mysqli_num_rows($DNIresult);
+    if(!$DNIrow){
+        if(strlen($v5)>=8){
+            if(preg_match($validacionL,$v5) && preg_match($validacionN,$v5) && preg_match($validacionE,$v5)){
+                $password = password_hash($v5, PASSWORD_BCRYPT);
+                $sql = "INSERT INTO users (codUser, username, email, dni, password, type) VALUES ('$v4','$v2','$v3', '$v4', '$password', '$v6')";
+                $result = mysqli_query($conn, $sql);
+                if(!$result){
+                    die("Error de conexion");
+                }
+                $_SESSION['mensaje_dash'] ='Registrado con exito';
+                // $_SESSION['class_dash'] ='dash';
+                header("Location: dashboard2.php");
+            }else{
+                $_SESSION['error_emp_pass'] = 'La contraseña debe tener letra mayuscula, numeros y #&%';
+                $_SESSION['error_emp_class'] = 'active';
+                header("Location: dashboard2.php");
             }
-            header("Location: dashboard2.php");
         }else{
-            // $_SESSION['error'] = 'La contraseña debe tener letra mayuscula, numeros y #&%';
-            // header("Location: login.php");
-            echo 'La contraseña debe tener letra mayuscula, numeros y #&%';
+            $_SESSION['error_emp_pass'] = 'La contraseña debe tener mas de 8 caracteres';
+            $_SESSION['error_emp_class'] = 'active';
+            header("Location: dashboard2.php");
         }
     }else{
-        // $_SESSION['error'] = 'La contraseña debe tener mas de 8 caracteres';
-        // header("Location: home.php");
-        echo 'La contraseña debe tener mas de 8 caracteres';
+        $_SESSION['error_emp_dni'] = 'El DNI o email ya existe';
+        $_SESSION['error_emp_class'] = 'active';
+        header("Location: dashboard2.php");
     }
 }else{
     echo 'DEBE LLENAR LOS CAMPOS DEL FORMULARIO';

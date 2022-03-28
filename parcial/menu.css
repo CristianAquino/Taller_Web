@@ -61,11 +61,16 @@
     line-height: 70px;
     text-align: center;
 }
-.navigation ul li a .icon ion-icon{
+.navigation ul li a .icon i{
     position: relative;
     font-size: 1.5em;
     z-index: 1;
 }
+/* .navigation ul li a .icon ion-icon{
+    position: relative;
+    font-size: 1.5em;
+    z-index: 1;
+} */
 .navigation ul li a .title{
     position: relative;
     display: block;

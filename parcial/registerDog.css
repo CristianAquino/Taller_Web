@@ -66,6 +66,12 @@
     font-size: 16px;
     border: 1px solid #333;
 }
+/* nuevo */
+.formRegister form input.newValor{
+    border: 1px solid #fff;
+    background-color: transparent;
+    color: #fff;
+}
 .formRegister form input[type='submit']{
     background-color: #03a9f4;
     border: none;

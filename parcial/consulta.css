@@ -43,10 +43,16 @@
     border: 1px solid #333;
     resize: none;
 }
+/* nuevo */
+.formRegister form.consulta textarea.newValor{
+    border: 1px solid #fff;
+    background-color: transparent;
+    color: #fff;
+}
 .formRegister form.consulta .boxConsult{
     grid-area: rayos;
 }
-.formRegister form.consulta input[type='number']{
+.formRegister form.consulta input:nth-child(7){
     grid-area: costo;
 }
 .formRegister form.consulta input[type='submit']{
