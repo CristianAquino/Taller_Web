@@ -7,7 +7,7 @@ $_SESSION['count_perro'] = $data['total'];
 <div class="formRegister">
     <form action="registerNewDog.php" method="POST">
         <h3>Registrar Perro</h3>
-        <input type="number" name="codigo" value="<?= date("Y000")+$_SESSION['count_perro']+1 ?>" readonly>
+        <input type="number" name="codigo" value="<?= date("Y000") + $_SESSION['count_perro'] + 1 ?>" readonly>
         <input type="text" name="name" placeholder="Nombre Perro">
         <div class="box boxDog">
             <span>Fecha de Nacimiento</span>
@@ -40,6 +40,6 @@ $_SESSION['count_perro'] = $data['total'];
         <input type="submit" value="Registrar">
     </form>
     <div class="imgBx imgRegister">
-        <img src="img/ejemplo.jpg" alt="">
+        <img src="https://i.postimg.cc/TPSjLdnb/ejemplo.webp" alt="">
     </div>
 </div>
